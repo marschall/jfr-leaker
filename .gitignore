@@ -1,2 +1,6 @@
 target/
+*.hprof
+*.index
+*.threads
+*.zip
 
