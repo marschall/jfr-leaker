@@ -4,7 +4,7 @@
   <groupId>com.github.marschall</groupId>
   <artifactId>jfr-leaker</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <inceptionYear>2019</inceptionYear>
+  <inceptionYear>2020</inceptionYear>
   <name>JFR Leader</name>
   <description>A reproducer for a JFR memory leak.</description>
 
