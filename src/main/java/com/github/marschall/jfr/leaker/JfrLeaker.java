@@ -79,37 +79,18 @@ public final class JfrLeaker {
     }
 
     @Override
-    protected Class<?> loadClass(String className, boolean resolve) throws ClassNotFoundException {
-      // Check if we have already loaded it..
-      Class<?> loadedClass = this.findLoadedClass(className);
-      if (loadedClass != null) {
-        if (resolve) {
-          this.resolveClass(loadedClass);
-        }
-        return loadedClass;
-      }
-
-      if (className.equals(JFR_RUNNABLE)) {
-        return this.loadClassFromByteArray(className, resolve, this.runnableClass);
-      } else if (className.equals(RUNNABLE_EVENT)) {
-        return this.loadClassFromByteArray(className, resolve, this.eventClass);
+    protected Class<?> findClass(String name) throws ClassNotFoundException {
+      if (name.equals(JFR_RUNNABLE)) {
+        return this.loadClassFromByteArray(name, this.runnableClass);
+      } else if (name.equals(RUNNABLE_EVENT)) {
+        return this.loadClassFromByteArray(name, this.eventClass);
       } else {
-        return super.loadClass(className, resolve);
+        return super.findClass(name);
       }
     }
 
-    private Class<?> loadClassFromByteArray(String className, boolean resolve, byte[] byteCode) throws ClassNotFoundException {
-      Class<?> clazz;
-      try {
-        clazz = this.defineClass(className, byteCode, 0, byteCode.length);
-      } catch (LinkageError e) {
-        // we lost the race, somebody else loaded the class
-        clazz = this.findLoadedClass(className);
-      }
-      if (resolve) {
-        this.resolveClass(clazz);
-      }
-      return clazz;
+    private Class<?> loadClassFromByteArray(String className, byte[] byteCode) throws ClassNotFoundException {
+      return this.defineClass(className, byteCode, 0, byteCode.length);
     }
 
   }
