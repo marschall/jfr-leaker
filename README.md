@@ -15,7 +15,7 @@ The histogram shows the issue is `jdk.jfr.internal.TypeLibrary` holding on to `j
 
 The object list shows the issue is `jdk.jfr.internal.TypeLibrary#types` holding on to `jdk.jfr.internal.PlatformEventType`.
 
-![list objects](https://github.com/marschall/jfr-leaker/raw/master/src/main/javadoc/histogram.png "List Objects")
+![list objects](https://github.com/marschall/jfr-leaker/raw/master/src/main/javadoc/list_objects.png "List Objects")
 
 The classloader explorer shows not ClassLoader-leaks.
 
