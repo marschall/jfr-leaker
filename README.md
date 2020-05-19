@@ -20,3 +20,11 @@ The object list shows the issue is `jdk.jfr.internal.TypeLibrary#types` holding 
 The classloader explorer shows not ClassLoader-leaks.
 
 ![classloader explorer](https://github.com/marschall/jfr-leaker/raw/master/src/main/javadoc/classloader_explorer.png "ClassLoader Explorer")
+
+
+The issue can be reproduced with
+
+```
+java -Xmx64m -Xms64m -XX:MaxMetaspaceSize=64m -XX:+UseSerialGC -XX:+HeapDumpOnOutOfMemoryError -jar target/jfr-leaker-0.1.0-SNAPSHOT.jar 
+```
+
