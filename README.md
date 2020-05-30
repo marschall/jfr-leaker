@@ -1,7 +1,7 @@
 JFR Leaker
 ==========
 
-A reproducer for a JFR memory leak. The leak is `jdk.jfr.internal.TypeLibrary` keeps on holding to `jdk.jfr.internal.PlatformEventType` instances even when the underlying classes are unloaded.
+A reproducer for the [JDK-8245951](https://bugs.openjdk.java.net/browse/JDK-8245951) JFR memory leak. The leak is `jdk.jfr.internal.TypeLibrary` keeps on holding to `jdk.jfr.internal.PlatformEventType` instances even when the underlying classes are unloaded.
 
 This can for example happen when you redeploy a web application that contains custom JFR events.
 
